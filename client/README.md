@@ -1,73 +1,155 @@
-# Welcome to your Lovable project
 
-## Project info
+# Week 8 Capstone – MERN Event & Task Manager
 
-**URL**: https://lovable.dev/projects/c254bae0-7ff6-48ae-9369-f8499893721f
+A full-stack MERN application for managing events, tasks, notifications, and users with authentication and documentation support.
 
-## How can I edit this code?
+## 🌐 Tech Stack
 
-There are several ways of editing your application.
+- **Frontend:** React (Vite + Tailwind CSS + TypeScript)
+- **Backend:** Node.js + Express.js + MongoDB
+- **API Docs:** Swagger
+- **Deployment:** Vercel (Frontend) & Render (Backend)
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c254bae0-7ff6-48ae-9369-f8499893721f) and start prompting.
+## 📁 Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
+```
+/week-8-capstone
+├── client/         # React frontend (Lovable AI generated)
+├── server/         # Express backend (DeepSeek generated)
+└── README.md       # Project documentation
+```
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started (Local Setup)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 1. Clone the Repository
 
-Follow these steps:
+```bash
+git clone <your-project-repo>
+cd week-8-capstone
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 2. Start the Backend
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+cd server
+npm install
+# Create a .env file
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<dbname>
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 3. Start the Frontend
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+cd ../client
+npm install
+# Optional: add proxy to package.json
+# "proxy": "http://localhost:5000"
+npm run dev
+```
 
-**Use GitHub Codespaces**
+Access your frontend at: `http://localhost:5173`  
+Backend runs on: `http://localhost:5000`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🔌 API Routes (Backend)
 
-This project is built with:
+Base URL: `/api`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+| Route                  | Description             |
+|------------------------|-------------------------|
+| `POST /auth/login`     | User login              |
+| `POST /auth/register`  | User registration       |
+| `GET /users/`          | Fetch users             |
+| `GET /events/`         | Event listing           |
+| `POST /events/`        | Create event            |
+| `GET /tasks/`          | Task listing            |
+| `POST /tasks/`         | Create task             |
+| `GET /notifications/`  | User notifications      |
 
-## How can I deploy this project?
+Swagger docs available at `/api-docs` (e.g. http://localhost:5000/api-docs)
 
-Simply open [Lovable](https://lovable.dev/projects/c254bae0-7ff6-48ae-9369-f8499893721f) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 🔒 Environment Variables
 
-Yes, you can!
+### Backend (`server/.env`)
+```
+PORT=5000
+MONGO_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/<dbname>
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Frontend (`client/.env`)
+```
+VITE_API_URL=https://<your-render-backend>.onrender.com
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+In React, use:
+```ts
+const API = import.meta.env.VITE_API_URL;
+```
+
+---
+
+## ☁️ Deployment
+
+### Backend on Render
+
+1. Push `/server` to GitHub
+2. Go to [https://render.com](https://render.com)
+3. New > Web Service → Connect repo
+4. Set:
+   - Build: `npm install`
+   - Start: `node server.js`
+   - Environment: Add `MONGO_URI`
+5. Deploy and get URL like: `https://your-api.onrender.com`
+
+---
+
+### Frontend on Vercel
+
+1. Push `/client` to GitHub
+2. Go to [https://vercel.com](https://vercel.com)
+3. Import GitHub repo
+4. Set `VITE_API_URL` to your Render backend URL
+5. Deploy
+
+Your frontend will be live on `https://your-project.vercel.app`
+
+---
+
+## 🧪 Testing
+
+- Backend tests are located in `/server/tests`
+- Use `npm test` to run backend tests
+- Manual testing can be done via Swagger UI or Postman
+
+---
+
+## 📸 Screenshots & Demo
+
+*(Add screenshots of the UI and API docs if available)*
+
+---
+
+## 🙌 Authors & Acknowledgements
+
+- Frontend generated via Loveable AI
+- Backend scaffolded using DeepSeek
+- Integrated and documented by Yvonne Njoroge
+
+---
+
+## 🛠️ Future Improvements
+
+- Add user roles (admin, member)
+- Real-time updates via Socket.io
+- PWA support for mobile usage
+
+---
