@@ -1,0 +1,14 @@
+{
+	"dependencies": {
+		"express": "^5.1.0",
+		"mongoose": "^8.16.4",
+		"bcryptjs": "^3.0.2",
+		"jsonwebtoken": "^9.0.2",
+		"joi": "^17.13.3",
+		"swagger-jsdoc": "^6.2.8",
+		"swagger-ui-express": "^5.0.1"
+	},
+	"scripts": {
+  "seed": "node seed.js"
+}
+}
